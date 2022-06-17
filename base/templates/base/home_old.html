@@ -1,0 +1,42 @@
+{% extends 'main.html' %}
+{% load static %}
+
+<!-- wrapping content -->
+{% block content %}  
+
+
+<h1>HOME TEMPLATE</h1>
+
+<link rel="stylesheet" type="text/css" media="screen" href="{% static '/styles/main.css' %}">
+
+<style>
+    .home-container{
+        display: grid;
+        grid-template-columns: 1fr 3fr 1fr;  /* this will create fraction 1:3 for sections */
+    }
+    
+</style>
+
+<div class="home-container">
+    <div>
+     {% include 'base/topics_components.html' %}
+
+    </div>
+
+    <!-- All the roooms will wrapped in this div -->
+    <div>
+          <h5>{{room_count}} room available</h5>
+        <a href="{% url 'create-room' %} ">CreateRoom</a>
+        {% include 'base/feed_component.html' %}
+
+    </div>
+        
+   <div>
+    {% include  'base/activity_component.html' %}
+
+   </div>
+
+
+</div>
+
+{% endblock %}
